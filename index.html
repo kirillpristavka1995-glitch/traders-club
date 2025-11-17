@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Traders Club</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: black;
+        overflow: hidden;
+    }
+
+    /* Плавное появление */
+    body {
+        opacity: 0;
+        transition: opacity 0.8s ease;
+    }
+    body.loaded { opacity: 1; }
+
+    .bg-container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        background-image: url('1.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    /* ЛОГО */
+    .title-box {
+        position: absolute;
+        top: 3vw;
+        left: 3vw;
+        color: white;
+        font-family: 'Playfair Display', serif;
+        letter-spacing: 0.15vw;
+    }
+
+    .main-title {
+        font-size: 4.5vw;
+        font-weight: 700;
+    }
+
+    .subtitle {
+        font-size: 1.4vw;
+        margin-top: 0.5vw;
+        display: flex;
+        align-items: center;
+    }
+
+    .line {
+        flex: 1;
+        height: 0.08vw;
+        background-color: white;
+        margin: 0 1vw;
+    }
+
+    .quote {
+        position: absolute;
+        bottom: 4vw;
+        left: 3vw;
+        width: 28vw;
+        color: white;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3vw;
+        line-height: 1.3;
+    }
+
+    /* НОВАЯ АККУРАТНАЯ СТРЕЛКА */
+    .arrow {
+        position: absolute;
+        right: 2vw;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        opacity: 0.7;
+        transition: opacity 0.3s;
+        width: 3vw;
+    }
+
+    .arrow:hover {
+        opacity: 1;
+    }
+
+    /* Плавная анимация «дыхания» */
+    @keyframes arrowPulse {
+        0%   { transform: translateY(-50%) translateX(0); }
+        50%  { transform: translateY(-50%) translateX(0.6vw); }
+        100% { transform: translateY(-50%) translateX(0); }
+    }
+    .arrow img {
+        width: 100%;
+        animation: arrowPulse 1.2s infinite ease-in-out;
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="bg-container">
+
+    <div class="title-box">
+        <div class="main-title">TRADERS CLUB</div>
+        <div class="subtitle">
+            <div class="line"></div>
+            MONEY NEVER SLEEPS
+            <div class="line"></div>
+        </div>
+    </div>
+
+    <div class="quote">
+        Деньги — это просто деньги, когда знаешь, что делаешь.<br>
+        А не знать, что делать, опасно.
+    </div>
+
+    <!-- SVG тонкая стрелка -->
+    <div class="arrow" onclick="goNext()">
+        <img src="data:image/svg+xml;utf8,
+        <svg xmlns='http://www.w3.org/2000/svg' width='80' height='20' viewBox='0 0 80 20' fill='none' stroke='white' stroke-width='2'>
+            <line x1='0' y1='10' x2='70' y2='10'/>
+            <polyline points='60,2 78,10 60,18'/>
+        </svg>">
+    </div>
+
+</div>
+
+<script>
+    window.onload = () => document.body.classList.add("loaded");
+
+    function goNext() {
+        document.body.style.opacity = 0;
+        setTimeout(() => { window.location.href = "next.html"; }, 800);
+    }
+</script>
+
+</body>
+</html>
